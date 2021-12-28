@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" ng-app="projectsModule">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+
+    <script src="/src/js/angular.min.js"></script>
+    <script src="../controller/projects.js"></script>
+    <title>1º Projeto com Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <link rel="shortcut icon" href="https://img.icons8.com/cotton/64/000000/source-code--v2.png" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/src/css/carousel.css" rel="stylesheet">
+
+</head>
+<header>
+
+    <body ng-controller="projectsController">
+        <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="http://127.0.0.1:5500//src/pages/index.html">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sistema
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="http://127.0.0.1:5500/src/pages/devs.html">Devs</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="http://127.0.0.1:5500/src/pages/projects.html">Projetos</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+
+                    </ul>
+                    </li>
+
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+</header>
+<br>
+<h1 align="center">Lista e Cadastro de Projetos.</h1>
+<br>
+<form>
+    <div class="container">
+
+        <div class="input-group mb-3">
+            <div class="input-group-text">Projeto</div>
+            <div class="col-sm">
+                <input id="form-nome" type="text" ng-model="project.nome" class="form-control" placeholder=""
+                    aria-label="Nome do Projeto">
+            </div>
+
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-text">Código</div>
+            <div class="col-sm">
+                <input type="text" ng-model="project.id" class="form-control" aria-label="Codigo do Projeto">
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Link do Site</span>
+            <div class="col-sm">
+                <input type="text" ng-model="project.link" class="form-control" id="github">
+            </div>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="col-sm">
+                <select class="form-select" ng-model="project.autor" ng-options="dev.nome for dev in devs track by dev.id">
+                    <option selected>Autor do Projeto</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+        <div class="col text-center">
+            <button type="button" ng-click="save()" class="btn btn-outline-success">Salvar</button>
+            <button type="button" ng-click="clean()" class="btn btn-outline-primary">Limpar</button>
+            <button type="button" ng-click="delete()" class="btn btn-outline-danger">Excluir</button>
+        </div>
+    </div><!-- /.container -->
+    <br>
+    <hr class="dropdown-divider">
+
+    <h4 align="center">Pesquisa de Projetos.</h1>
+        <br>
+        <div class="container">
+            <input class="form-control me-2" type="text" id="pesquisa" ng-model="findProject"
+                placeholder="Digite sua pesquisa">
+        </div>
+</form>
+<br>
+<div class="container">
+    <!--TABLE SECTION-->
+    <table class="table table-hover">
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Autor</th>
+        <th>Link</th>
+      
+        <tr ng-repeat="projectsTable in projects | filter:findProject" ng-click="selecionarProject(projectsTable)">
+            <td>{{projectsTable.id}}</td>
+            <td>{{projectsTable.nome}}</td>
+            <td>{{projectsTable.autor.nome}}</td>
+            <td>{{projectsTable.link}}</td>
+        </tr>
+    </table>
+</div>
+<hr class="featurette-divider">
+<!-- FOOTER -->
+<footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2021 <strong> SurferSolution </strong>, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
+</main>
+<script src="/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
