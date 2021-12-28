@@ -41,47 +41,9 @@
 
     <body ng-controller="devsController">
         <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="http://127.0.0.1:5500//src/pages/index.html">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
-                        </li>
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Sistema
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Devs</a></li>
-                                <li><a class="dropdown-item" href="http://127.0.0.1:5500/src/pages/projects.html">Projetos</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-
-                    </ul>
-                    </li>
-
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        <header>
+            <div ng-include src="'menu.html'"></div>
+          </header>
 </header>
 <br>
 <h1 align="center">Lista e Cadastro de Devs.</h1>
@@ -126,7 +88,7 @@
     <hr class="dropdown-divider">
     <br>
     <div class="container">
-        <input class="form-control me-2" type="text" id="pesquisa" ng-model="findDev"placeholder="Digite sua pesquisa">
+        <input class="form-control me-2" type="search" id="pesquisa" ng-model="findDev"placeholder="Digite sua pesquisa">
     </div>
 </form>
 <br>
