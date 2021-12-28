@@ -1,0 +1,8 @@
+{
+    "projects":
+    [
+        { "id": "1", "nome": "HTML", "autor": "Kristian", "link": "http://127.0.0.1:5500/src/pages/index.html" },
+        { "id": "2", "nome": "CSS", "autor": "Lucas", "link": "http://127.0.0.1:5500/src/pages/projects.html" },
+        { "id": "3", "nome": "Javascript", "autor": "Joao", "link": "http://127.0.0.1:5500/src/pages/devs.html" }
+    ]
+}
